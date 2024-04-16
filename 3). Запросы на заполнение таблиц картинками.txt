@@ -1,0 +1,394 @@
+-- добавляем столбцы для хранения изображений
+ALTER TABLE Колонны
+ADD Изображение VARBINARY(MAX);
+ALTER TABLE Стены
+ADD Изображение VARBINARY(MAX);
+ALTER TABLE Перекрытия
+ADD Изображение VARBINARY(MAX);
+ALTER TABLE Переходные
+ADD Изображение VARBINARY(MAX);
+
+--если нужно просто добавить данные в столбец, который ранее был не заполнен картинками в таблице Переходные
+
+DECLARE @imgPath NVARCHAR(256);
+SET @imgPath = 'D:\!Documents\Личное\Программирование\Курсовой проект V1\Курсовой проект\Эскизы конструкций\';
+
+DECLARE @sql NVARCHAR(MAX);
+SET @sql = 'UPDATE Переходные SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath + 'Плм1.jpg'', SINGLE_BLOB) AS Image) WHERE IDПереходной = 1';
+EXEC sp_executesql @sql;
+
+SET @sql = 'UPDATE Переходные SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath + 'Плм2.jpg'', SINGLE_BLOB) AS Image) WHERE IDПереходной = 2';
+EXEC sp_executesql @sql;
+
+SET @sql = 'UPDATE Переходные SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath + 'Плм3.jpg'', SINGLE_BLOB) AS Image) WHERE IDПереходной = 3';
+EXEC sp_executesql @sql;
+
+SET @sql = 'UPDATE Переходные SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath + 'Плм4.jpg'', SINGLE_BLOB) AS Image) WHERE IDПереходной = 4';
+EXEC sp_executesql @sql;
+
+SET @sql = 'UPDATE Переходные SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath + 'Плм5.jpg'', SINGLE_BLOB) AS Image) WHERE IDПереходной = 5';
+EXEC sp_executesql @sql;
+
+SET @sql = 'UPDATE Переходные SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath + 'Плм6.jpg'', SINGLE_BLOB) AS Image) WHERE IDПереходной = 6';
+EXEC sp_executesql @sql;
+
+SET @sql = 'UPDATE Переходные SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath + 'Плм7.jpg'', SINGLE_BLOB) AS Image) WHERE IDПереходной = 7';
+EXEC sp_executesql @sql;
+
+SET @sql = 'UPDATE Переходные SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath + 'Плм8.jpg'', SINGLE_BLOB) AS Image) WHERE IDПереходной = 8';
+EXEC sp_executesql @sql;
+
+--если нужно просто добавить данные в столбец, который ранее был не заполнен картинками в таблице Перекрытия
+
+DECLARE @imgPath2 NVARCHAR(256);
+SET @imgPath2 = 'D:\!Documents\Личное\Программирование\Курсовой проект V1\Курсовой проект\Эскизы конструкций\';
+
+DECLARE @sql2 NVARCHAR(MAX);
+SET @sql2 = 'UPDATE Перекрытия SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath2 + 'Пм4.2.jpg'', SINGLE_BLOB) AS Image) WHERE IDПерекрытия = 1';
+EXEC sp_executesql @sql2;
+
+SET @sql2 = 'UPDATE Перекрытия SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath2 + 'Пм5.2.jpg'', SINGLE_BLOB) AS Image) WHERE IDПерекрытия = 2';
+EXEC sp_executesql @sql2;
+
+SET @sql2 = 'UPDATE Перекрытия SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath2 + 'Пм4.3.jpg'', SINGLE_BLOB) AS Image) WHERE IDПерекрытия = 3';
+EXEC sp_executesql @sql2;
+
+SET @sql2 = 'UPDATE Перекрытия SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath2 + 'Пм5.3.jpg'', SINGLE_BLOB) AS Image) WHERE IDПерекрытия = 4';
+EXEC sp_executesql @sql2;
+
+SET @sql2 = 'UPDATE Перекрытия SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath2 + 'Пм4.4.jpg'', SINGLE_BLOB) AS Image) WHERE IDПерекрытия = 5';
+EXEC sp_executesql @sql2;
+
+SET @sql2 = 'UPDATE Перекрытия SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath2 + 'Пм5.4.jpg'', SINGLE_BLOB) AS Image) WHERE IDПерекрытия = 6';
+EXEC sp_executesql @sql2;
+
+SET @sql2 = 'UPDATE Перекрытия SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath2 + 'Пм4.5.jpg'', SINGLE_BLOB) AS Image) WHERE IDПерекрытия = 7';
+EXEC sp_executesql @sql2;
+
+SET @sql2 = 'UPDATE Перекрытия SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath2 + 'Пм5.5.jpg'', SINGLE_BLOB) AS Image) WHERE IDПерекрытия = 8';
+EXEC sp_executesql @sql2;
+
+SET @sql2 = 'UPDATE Перекрытия SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath2 + 'Пм4.6.jpg'', SINGLE_BLOB) AS Image) WHERE IDПерекрытия = 9';
+EXEC sp_executesql @sql2;
+
+SET @sql2 = 'UPDATE Перекрытия SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath2 + 'Пм5.6.jpg'', SINGLE_BLOB) AS Image) WHERE IDПерекрытия = 10';
+EXEC sp_executesql @sql2;
+
+SET @sql2 = 'UPDATE Перекрытия SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath2 + 'Пм4.7.jpg'', SINGLE_BLOB) AS Image) WHERE IDПерекрытия = 11';
+EXEC sp_executesql @sql2;
+
+SET @sql2 = 'UPDATE Перекрытия SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath2 + 'Пм5.7.jpg'', SINGLE_BLOB) AS Image) WHERE IDПерекрытия = 12';
+EXEC sp_executesql @sql2;
+
+SET @sql2 = 'UPDATE Перекрытия SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath2 + 'Пм4.8.jpg'', SINGLE_BLOB) AS Image) WHERE IDПерекрытия = 13';
+EXEC sp_executesql @sql2;
+
+SET @sql2 = 'UPDATE Перекрытия SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath2 + 'Пм5.8.jpg'', SINGLE_BLOB) AS Image) WHERE IDПерекрытия = 14';
+EXEC sp_executesql @sql2;
+
+SET @sql2 = 'UPDATE Перекрытия SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath2 + 'Пм4.1.jpg'', SINGLE_BLOB) AS Image) WHERE IDПерекрытия = 15';
+EXEC sp_executesql @sql2;
+
+SET @sql2 = 'UPDATE Перекрытия SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath2 + 'Пм5.1.jpg'', SINGLE_BLOB) AS Image) WHERE IDПерекрытия = 16';
+EXEC sp_executesql @sql2;
+
+--если нужно просто добавить данные в столбец, который ранее был не заполнен картинками в таблице Стены
+
+DECLARE @imgPath3 NVARCHAR(256);
+SET @imgPath3 = 'D:\!Documents\Личное\Программирование\Курсовой проект V1\Курсовой проект\Эскизы конструкций\';
+
+DECLARE @sql3 NVARCHAR(MAX);
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ1 эт 0.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 1';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ2 эт 0.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 2';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ3 эт 0.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 3';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ4 эт 0.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 4';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ5 эт 0.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 5';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ6 эт 0.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 6';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'Стены сек4  эт 0.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 7';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'Стены сек5  эт 0.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 8';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ1 эт 1 - 26.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 9';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ2 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 10';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ3 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 11';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ4 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 12';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ4.1 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 13';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ5 эт 1 - 26.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 14';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ6 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 15';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ1 эт 1 - 26.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 16';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ2 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 17';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ3 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 18';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ4 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 19';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ4.1 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 20';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ5 эт 1 - 26.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 21';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ6 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 22';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ1 эт 1 - 26.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 23';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ2 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 24';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ3 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 25';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ4 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 26';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ4.1 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 27';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ5 эт 1 - 26.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 28';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ6 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 29';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ1 эт 1 - 26.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 30';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ2 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 31';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ3 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 32';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ4 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 33';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ4.1 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 34';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ5 эт 1 - 26.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 35';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ6 эт 1 - 25.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 36';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ1 эт 1 - 26.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 37';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'ДЖ5 эт 1 - 26.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 38';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'СТ1 эт 26.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 39';
+EXEC sp_executesql @sql3;
+
+SET @sql3 = 'UPDATE Стены SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath3 + 'СТ2 эт 26.jpg'', SINGLE_BLOB) AS Image) WHERE IDСтены = 40';
+EXEC sp_executesql @sql3;
+
+--если нужно просто добавить данные в столбец, который ранее был не заполнен картинками в таблице Колонны
+
+DECLARE @imgPath4 NVARCHAR(256);
+SET @imgPath4 = 'D:\!Documents\Личное\Программирование\Курсовой проект V1\Курсовой проект\Эскизы конструкций\';
+
+DECLARE @sql4 NVARCHAR(MAX);
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К1-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 1';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К1-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 2';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К1-2.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 3';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К1-2.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 4';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К1-3.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 5';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К1-3.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 6';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К1-4.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 7';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К1-4.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 8';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К2-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 9';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К2-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 10';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К2-2.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 11';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К2-2.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 12';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К2-3.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 13';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К2-3.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 14';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К2-4.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 15';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К2-4.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 16';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К3-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 17';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К3-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 18';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К3-2.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 19';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К3-2.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 20';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К3-3.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 21';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К3-3.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 22';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К3-4.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 23';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К3-4.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 24';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К4-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 25';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К4-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 26';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К4-2.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 27';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К4-2.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 28';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К4-3.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 29';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К4-3.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 30';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К5-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 31';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К5-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 32';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К5-2.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 33';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К5-2.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 34';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К5-3.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 35';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К5-3.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 36';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К6-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 37';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К6-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 38';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К6-2.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 39';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К6-2.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 40';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К7-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 41';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К7-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 42';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К7-2.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 43';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К7-2.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 44';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К8-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 45';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К8-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 46';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К8-2.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 47';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К8-2.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 48';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К9-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 49';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К9-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 50';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К10-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 51';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К10-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 52';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К11-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 53';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К11-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 54';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К12-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 55';
+EXEC sp_executesql @sql4;
+
+SET @sql4 = 'UPDATE Колонны SET Изображение = (SELECT * FROM OPENROWSET(BULK N''' + @imgPath4 + 'К12-1.jpg'', SINGLE_BLOB) AS Image) WHERE IDКолонны = 56';
+EXEC sp_executesql @sql4;
+

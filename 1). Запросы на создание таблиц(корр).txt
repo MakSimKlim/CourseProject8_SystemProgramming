@@ -1,0 +1,125 @@
+CREATE DATABASE CourseProjectADONet(corr);
+
+CREATE TABLE Проекты (
+    IDПроекта INT PRIMARY KEY,
+    Обозначение NVARCHAR(100),
+    Наименование NVARCHAR(100),
+    НомерИзменений DECIMAL(4,2),
+	ДатаВыдачи DATE
+);
+
+CREATE TABLE Секции (
+    IDСекции INT PRIMARY KEY,
+    НаименованиеСекции NVARCHAR(100),
+    ОсиРасположения NVARCHAR(100),
+    ОтноситОтметкаНиза0ЭтажаСек DECIMAL(6,3),
+	АбсолютОтметкаНуля DECIMAL(6,3)
+);
+
+CREATE TABLE Бетоны (
+    IDБетона INT PRIMARY KEY,
+    Класс NVARCHAR(50),
+    Марка NVARCHAR(50),
+    ПрочностьМпа DECIMAL(6,2)
+);
+
+CREATE TABLE ЭтажиСек (
+    IDЭтажаСек INT PRIMARY KEY,
+    НомерЭтажаСек INT,
+    НомерЯрусаСек INT,
+    ВысотаЭтажаСек DECIMAL(5,3),
+	ВысотаСтенКолонн DECIMAL(5,3),
+	ТолщПерекрытия DECIMAL(4,3),
+	IDСекции INT FOREIGN KEY REFERENCES Секции(IDСекции)
+);
+
+CREATE TABLE Колонны (
+    IDколонны INT PRIMARY KEY,
+    Наименование NVARCHAR(100),
+    ДлинаВСечении DECIMAL(5,3),
+    ШиринаВСечении DECIMAL(5,3),
+    ЛистПроекта NVARCHAR(100),
+    IDПроекта INT FOREIGN KEY REFERENCES Проекты(IDПроекта), 
+    Изображение VARBINARY(MAX)
+);
+
+CREATE TABLE КолоннЭтСек (
+    ID INT PRIMARY KEY,
+    IDколонны INT FOREIGN KEY REFERENCES Колонны(IDколонны),
+    IDЭтажаСек INT FOREIGN KEY REFERENCES ЭтажиСек(IDЭтажаСек),
+    КоличКолоннНаЭтаже INT
+);
+
+CREATE TABLE КолоннБет (
+    ID INT PRIMARY KEY,
+    IDколонны INT FOREIGN KEY REFERENCES Колонны(IDколонны),
+    IDБетона INT FOREIGN KEY REFERENCES Бетоны(IDБетона)    
+);
+
+CREATE TABLE Стены (
+    IDСтены INT PRIMARY KEY,
+    Наименование NVARCHAR(100),
+    Объем DECIMAL(6,3),
+	ЛистПроекта NVARCHAR(100),
+	IDПроекта INT FOREIGN KEY REFERENCES Проекты(IDПроекта), 
+    Изображение VARBINARY(MAX)
+);
+
+CREATE TABLE СтеныЭтСек (
+    ID INT PRIMARY KEY,
+    IDСтены INT FOREIGN KEY REFERENCES Стены(IDСтены),
+    IDЭтажаСек INT FOREIGN KEY REFERENCES ЭтажиСек(IDЭтажаСек),
+	КоличСтенНаЭтаже INT  
+);
+
+CREATE TABLE СтеныБет (
+    ID INT PRIMARY KEY,
+    IDСтены INT FOREIGN KEY REFERENCES Стены(IDСтены),
+    IDБетона INT FOREIGN KEY REFERENCES Бетоны(IDБетона)    
+);
+
+CREATE TABLE Перекрытия (
+    IDПерекрытия INT PRIMARY KEY,
+    Наименование NVARCHAR(100),
+    Объем DECIMAL(6,3),
+	Толщина DECIMAL(4,3),
+	ЛистПроекта NVARCHAR(100),
+	IDПроекта INT FOREIGN KEY REFERENCES Проекты(IDПроекта), 
+    Изображение VARBINARY(MAX)
+);
+
+CREATE TABLE ПерекрЭтСек (
+    ID INT PRIMARY KEY,
+    IDПерекрытия INT FOREIGN KEY REFERENCES Перекрытия(IDПерекрытия),
+    IDЭтажаСек INT FOREIGN KEY REFERENCES ЭтажиСек(IDЭтажаСек),
+	КоличПерекрНаЭтаже INT  
+);
+
+CREATE TABLE ПерекрБет (
+    ID INT PRIMARY KEY,
+    IDПерекрытия INT FOREIGN KEY REFERENCES Перекрытия(IDПерекрытия),
+    IDБетона INT FOREIGN KEY REFERENCES Бетоны(IDБетона)    
+);
+
+CREATE TABLE Переходные (
+    IDПереходной INT PRIMARY KEY,
+    Наименование NVARCHAR(100),
+    Объем DECIMAL(6,3),
+	Толщина DECIMAL(4,3),
+	ЛистПроекта NVARCHAR(100),
+	IDПроекта INT FOREIGN KEY REFERENCES Проекты(IDПроекта), 
+    Изображение VARBINARY(MAX)
+);
+
+CREATE TABLE ПерехЭтСек (
+    ID INT PRIMARY KEY,
+    IDПереходной INT FOREIGN KEY REFERENCES Переходные(IDПереходной),
+    IDЭтажаСек INT FOREIGN KEY REFERENCES ЭтажиСек(IDЭтажаСек),
+	КоличПерехНаЭтаже INT  
+);
+
+CREATE TABLE ПерехБет (
+    ID INT PRIMARY KEY,
+    IDПереходной INT FOREIGN KEY REFERENCES Переходные(IDПереходной),
+    IDБетона INT FOREIGN KEY REFERENCES Бетоны(IDБетона)    
+);
